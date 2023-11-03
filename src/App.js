@@ -1,29 +1,20 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import { DatePicker } from "antd";
+import MyDrawer from "./Drawer";
+
+// import { Carousel } from "antd";
 
 function App() {
-    const [restaurants, setRestaurants] = useState([]);
-    // fetching data and use effects
-    async function fetchRestaurants() {
-        const baseURL =
-            "https://www.apitutor.org/yelp/simple/v3/businesses/search?";
-        const url = `${baseURL}location=Asheville,%20NC&term=pizza&limit=5`;
-        const response = await fetch(url);
-        const data = await response.json();
-        console.log(data);
-        setRestaurants(data);
-    }
-
-    useEffect(() => {
-        fetchRestaurants();
-    }, []);
-
     return (
         <div className="App">
             <header>Header</header>
             <main>
-                <section id="section1">Search form goes here...</section>
-                <section id="restaurants">Restaurants go here...</section>
+                <section id="section1">
+                    <DatePicker />
+                </section>
+                <section id="restaurants">
+                    <MyDrawer />
+                </section>
             </main>
         </div>
     );
